@@ -13,7 +13,8 @@ The plugin exports structured, read-only observations to a local file. It does n
 
 ## Implementation
 
-The plugin captures observations at most once per second: visible interface
+The plugin captures observations at a 250-millisecond interval (approximately
+four snapshots per second): visible interface
 text/actions/bounds, inventory, visible NPC information, local-player location
 and animation state, and camera pitch/yaw. Snapshots use RuneLite's Filepath API
 and a background file writer. There is no HTTP server, network upload, input

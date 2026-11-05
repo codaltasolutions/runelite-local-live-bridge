@@ -15,7 +15,8 @@ The plugin exports structured, read-only observations to a local file. It does n
 
 ## Functionality
 
-When explicitly enabled, the plugin captures at most one snapshot per second:
+When enabled, the plugin captures observations at a 250-millisecond interval
+(approximately four snapshots per second):
 
 - Logged-in widget text, actions, and canvas bounds, including tutorial dialogue.
 - Inventory item identifiers, names, quantities, and slots.
