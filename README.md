@@ -1,8 +1,9 @@
 # Local Live Bridge
 
-An experimental RuneLite plugin that exports live observations to a local JSON
-file for an external desktop assistant. This is a prototype seeking review,
-not a Plugin Hub approved release.
+A RuneLite plugin that makes structured, read-only game information available
+to external assistants through a local JSON file.
+
+This plugin is not currently available through the RuneLite Plugin Hub.
 
 ## Intended use
 
@@ -28,7 +29,8 @@ Canvas bounds are not desktop-window coordinates.
 
 ## Data handling
 
-The plugin is disabled by default. It does not inspect login widgets or collect
+Installing the plugin enables it using RuneLite's standard behavior. It can be
+disabled through the plugin settings. It does not inspect login widgets or collect
 credentials, other-player entities, or chatbox history. It skips data collection
 outside `LOGGED_IN`, publishing only status metadata. Visible interface text can
 still include account-related text displayed by the game. Data stays in a local
@@ -49,9 +51,10 @@ prototype are deliberately excluded from this source project.
 
 ## Validation status
 
-The original prototype produced class files and passed a launcher smoke check,
-but never produced a verified logged-in snapshot. This revised version adds
-standard build configuration and CI. In-game behavior is unverified.
+The Java 11 Gradle build and Plugin Hub build checks passed for the earlier
+submitted source version. Live capture during a logged-in game session remains
+unverified. The default-enabled setting has been corrected in response to
+automated review; this revision requires fresh build checks.
 
 Manual checks required before release: enable/disable the plugin; confirm fresh
 timestamps; inspect tutorial dialogue and inventory changes; confirm logout

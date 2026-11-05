@@ -1,19 +1,31 @@
-# Proposed Plugin Hub submission
+# Add Local Live Bridge
 
-Title: Add Local Live Bridge (experimental local observation export)
+Local Live Bridge exports structured, read-only game observations to a local
+JSON file for use by external assistants.
 
-This plugin exports visible interface text/actions/bounds, inventory, visible
-NPC information, local-player position/animation, and camera state to a local
-JSON file at most once per second. It is disabled by default, uses RuneLite's
-Filepath API, and has no network endpoint or input/action implementation.
+## Intended use
 
-The intended consumer is an external desktop AI assistant for Tutorial Island,
-potentially paired with separate mouse/keyboard automation. This is explicitly
-disclosed for review, not presented as a conventional in-game helper. Acceptance
-and rules compliance have not been established.
+Local Live Bridge helps external assistants give players explanations grounded in what they are seeing in RuneScape. It connects general game knowledge with the dialogue, interface elements, and inventory items relevant to a player’s question.
 
-Validation: CI build is to be checked after publication. In-game behavior is
-unverified; the earlier local prototype never produced a confirmed logged-in
-snapshot. Keep the submission draft pending validation and maintainer guidance.
+A new player could ask, “What does this instructor mean?” or “What is this item used for?” and receive an explanation informed by the game context. This supports learning through conversation and helps players understand the reasons behind tutorial instructions.
 
-Generated-by: OpenAI Codex
+The plugin exports structured, read-only observations to a local file. It does not generate mouse or keyboard input, execute game actions, or accept gameplay commands.
+
+## Implementation
+
+The plugin captures observations at most once per second: visible interface
+text/actions/bounds, inventory, visible NPC information, local-player location
+and animation state, and camera pitch/yaw. Snapshots use RuneLite's Filepath API
+and a background file writer. There is no HTTP server, network upload, input
+injection, game action implementation, or command endpoint.
+
+Game observations are collected only while logged in. Login-screen widgets,
+credentials, other-player entities, and chatbox history are excluded. Consumers
+must reject stale snapshots.
+
+## Validation and review status
+
+The Java 11 Gradle build and Plugin Hub build checks passed for the earlier
+source version. Live logged-in capture remains unverified. The default-enabled
+setting has been corrected in response to automated review; this revision
+requires fresh build checks and in-game validation before release.
