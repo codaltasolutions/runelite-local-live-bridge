@@ -47,7 +47,7 @@ public class LiveBridgePlugin extends Plugin
             thread.setDaemon(true);
             return thread;
         });
-        publication = writer.scheduleWithFixedDelay(this::publish, 0, 1000, TimeUnit.MILLISECONDS);
+        publication = writer.scheduleWithFixedDelay(this::publish, 0, 250, TimeUnit.MILLISECONDS);
     }
 
     @Override protected void shutDown()
@@ -91,7 +91,7 @@ public class LiveBridgePlugin extends Plugin
     private void capture()
     {
         long now = System.currentTimeMillis();
-        if (now - lastCapture < 1000) return;
+        if (now - lastCapture < 250) return;
         lastCapture = now;
         Map<String, Object> snapshot = map("schema", 1, "sequence", ++sequence, "capturedAt", now,
             "status", client.getGameState().name(), "writeError", writeError);
