@@ -4,7 +4,15 @@ An experimental RuneLite plugin that exports live observations to a local JSON
 file for an external desktop assistant. This is a prototype seeking review,
 not a Plugin Hub approved release.
 
-## Functionality and intended use
+## Intended use
+
+Local Live Bridge helps external assistants give players explanations grounded in what they are seeing in RuneScape. It connects general game knowledge with the dialogue, interface elements, and inventory items relevant to a player’s question.
+
+A new player could ask, “What does this instructor mean?” or “What is this item used for?” and receive an explanation informed by the game context. This supports learning through conversation and helps players understand the reasons behind tutorial instructions.
+
+The plugin exports structured, read-only observations to a local file. It does not generate mouse or keyboard input, execute game actions, or accept gameplay commands.
+
+## Functionality
 
 When explicitly enabled, the plugin captures at most one snapshot per second:
 
@@ -17,13 +25,6 @@ It writes `state.json` inside its RuneLite-managed plugin data directory. It use
 RuneLite's `Filepath` API, and performs disk writes on a background executor.
 Readers must reject snapshots whose `capturedAt` is more than three seconds old.
 Canvas bounds are not desktop-window coordinates.
-
-The requested use case is an external AI assistant observing Tutorial Island,
-potentially paired with separate desktop mouse/keyboard automation. The plugin
-itself does not issue inputs, invoke game actions, inject code, make network
-requests, or accept commands. This intended integration is disclosed for
-maintainer review; this project makes no claim that the use case complies with
-RuneLite or Jagex rules or will be accepted into the Plugin Hub.
 
 ## Data handling
 
