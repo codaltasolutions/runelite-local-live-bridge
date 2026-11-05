@@ -27,7 +27,7 @@ import net.runelite.client.util.Filepath;
 /** Publishes observations only. All game reads happen on the client thread. */
 @PluginDescriptor(name = "Local Live Bridge", internalName = "local-live-bridge",
     description = "Exports live game observations to a local file for external assistants",
-    tags = {"export", "local", "assistant"}, enabledByDefault = false)
+    tags = {"export", "local", "assistant"})
 public class LiveBridgePlugin extends Plugin
 {
     @Inject private Client client;
